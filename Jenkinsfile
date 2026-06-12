@@ -1,7 +1,8 @@
 node {
 
     stage('Checkout') {
-        git 'https://github.com/premgowda7/prema-portfolio.git'
+        git branch: 'main',
+            url: 'https://github.com/premgowda7/prema-portfolio.git'
     }
 
     stage('Verify Files') {
