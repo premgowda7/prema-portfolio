@@ -1,6 +1,15 @@
 node {
 
-    stage('Install') {
+    stage('Checkout') {
+        git 'https://github.com/premgowda7/prema-portfolio.git'
+    }
+
+    stage('Verify Files') {
+        sh 'pwd'
+        sh 'ls -la'
+    }
+
+    stage('Install Dependencies') {
         sh 'npm install'
     }
 
@@ -8,4 +17,7 @@ node {
         sh 'npm run build'
     }
 
+    stage('Verify Build') {
+        sh 'ls -la dist'
+    }
 }
