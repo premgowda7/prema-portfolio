@@ -5,7 +5,7 @@ node {
             url: 'https://github.com/premgowda7/prema-portfolio.git'
     }
 
-    stage('Install Dependencies') {
+    stage('Install') {
         sh 'npm install'
     }
 
