@@ -5,11 +5,6 @@ node {
             url: 'https://github.com/premgowda7/prema-portfolio.git'
     }
 
-    stage('Verify Files') {
-        sh 'pwd'
-        sh 'ls -la'
-    }
-
     stage('Install Dependencies') {
         sh 'npm install'
     }
@@ -18,7 +13,11 @@ node {
         sh 'npm run build'
     }
 
-    stage('Verify Build') {
-        sh 'ls -la dist'
+    stage('Deploy') {
+        sh '''
+        sudo rm -rf /var/www/html/*
+        sudo cp -r dist/* /var/www/html/
+        sudo systemctl restart nginx
+        '''
     }
 }
